@@ -1,0 +1,8 @@
+<select name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" multiple="multiple" >
+    <option value="">--- <%TEXT VALUE="please select" %> ---</option>
+    <%LOOP this.get_elements %>
+        <option value="<%= _.value ESCAPE=HTML %>"<%IF _.is_selected %> selected="selected"<%/IF%>>
+            <%= _.data ESCAPE=HTML %>
+        </option>
+    <%/LOOP%>
+</select>

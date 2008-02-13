@@ -1,0 +1,302 @@
+=pod
+
+=head1 NAME
+
+Hyper::HowTo::Flow_Control -  How to create Flow Controls
+
+=head1 VERSION
+
+This document describes Hyper::Control::Flow 0.01
+
+=head1 DESCRIPTION
+
+This document describes the development of a flow control.
+
+=head1 CONFIGURATION FILES
+
+The ini style configuration files are stored within the following structure:
+
+ $APP_ROOT/etc/Hyper/Control/Flow/$SERVICE/$USECASE.ini
+
+=head1 CONFIG FILE SYNTAX
+
+The config file syntax is UNIX-Style .ini-Files. They are a bit different 
+from Windows-style .ini files - the most notable difference is 
+heredoc-support:
+
+ attribute=<<EOT
+ first_value
+ second_value
+ third_value
+ EOT 
+
+The config file is split into several sections. 
+
+Sections are:
+
+=over 
+
+=item * global
+
+Global configuration data
+
+=item * Control
+
+embedded controls
+
+=item * Step
+
+the steps for this flow.
+
+=back
+
+=head2 Config file sections
+
+=head3 [global]
+
+Global configuration data goes here. 
+
+The attributes allowed in [global] are described below.
+
+=over
+
+=item attributes
+
+Attributes for this Control. Multiple attributes can be specified using the 
+heredoc syntax.
+
+=back
+
+Example:
+
+ [global]
+ attributes=<<EOT
+ $ATTRIBUTE_NAME_1
+ $ATTRIBUTE_NAME_2
+ EOT
+
+=head3 [Control] - embedded controls
+
+You can embed Flow, Container and Primitive controls. Each embedded control 
+needs a unique name and a class.
+
+Controls are all subsections of the section [Control]:
+
+ [Control]
+ [Control $NAME]
+
+Controls have the following attributes: 
+
+=over
+
+=item class :MANDATORY
+
+Class of the embedded control. Perl class name with all '::' replaced by '.' 
+and without the leading Hyper namespace
+
+Example: 
+
+ [Control cSampleControl]
+ ; use Hyper::Control::Container::CSample as Perl class
+ class=Control.Container.CSample
+ 
+=item template :OPTIONAL
+
+Available for Container, Base and Primitive Controls. Template used for 
+rendering a control. You may either specify a path relative to base_path
+or an absolute path.
+
+=back
+
+Foll example:
+
+ [Control]
+ [Control cExampleControl]
+ class=ControlType.myService.myUsecase
+ template=/path/to/template
+
+=head3 [Step] - workflow steps
+
+A workflow consist of a number of steps. Steps may have actions (code) to be 
+executed and controls to be displayed. 
+
+Steps are connected via transitions which may have conditions to be met.
+
+All steps are subsections of the section [Step]:
+
+ [Step]
+ [Step myStep]
+
+Steps may have the following attributes:
+
+=over
+
+=item action :OPTIONAL
+
+Actions are executed before your own code is executed. 
+In actions, you may assign data to embedded controls by reading out other 
+controls' data or calling their methods.
+
+Multiple actions can be specified using the heredoc syntax.
+Each action must be terminated by ';'.
+
+Elements of the action syntax are described below.
+
+=over
+
+=item * this
+
+The special control "this" refers to an instance of the current object itself:
+
+ this.mAccount=cAccount.value();
+
+This corresponds to $self used as a convention in perl classes.  
+
+=item * Constants
+
+Numbers without any quotes or text with embraced by ' or ".
+
+ this.mNumericConstant=23;
+ this.mStringConstant="Hello World"
+
+=item * Variables / Attributes
+
+Variables can be nested with a '.' as seperator. Each variable must begin 
+with a char A-Z, a-z as first sign. All other chars of the variable
+name can be A-Z, a-z, _ and 0-9.
+
+ this.mNumericConstant=this.someVariable;
+ this.mStringConstant=cControl.anotherVariable2;
+
+=item * Methods
+
+Each method name must begin with a char A-Z, a-z as first sign. All other 
+chars of the variable name can be A-Z, a-z, _ and 0-9.
+
+Methods can also be called on nested variables if the variable has this 
+method.
+
+=back
+
+Examples:
+
+ ; assignment
+ action=<<EOT
+ this.mTextAttribute="This is a Constant";
+ this.mAnotherText='Another Constant';
+ this.mNumber=1234;
+ cEmbeddedContainer.mValue=cAnotherContainer.mTest;
+ EOT
+
+ ; method call
+ action=<<EOT
+ this.callMe();
+ cEmbeddedContainer.mValue=cAnotherContainer.test();
+ EOT
+
+=back
+
+=head3 [Step source destination] - transitions from one step to another
+
+Each Step may have multiple transitions to other steps.
+
+Transitions are written as sub-sections of the source step with the name of 
+the destination step:
+
+ [Step SourceStep DestinationStep]
+
+Transitions may only be performed when a condition is met. If no condition 
+is specified, the transition will be performed automatically.
+
+Transitions may have the following attributes:
+
+=over
+
+=item condition :OPTIONAL
+
+You may use constants, variables, and method calls in conditions 
+(see actions for more information). You can't make assignments but you 
+may use the following logical operators.
+
+ Operator       Description
+ ------------------------------------
+ !              Logical not
+ not            Not operator
+ ==             Numeric equal
+ !=             Numeric uneuqal
+ eq             String equal
+ ne             String unequal
+ &&             Logical and
+ ||             Logical or
+ and            And operator
+ or             or operator
+
+Operator precendence is equal to perl - see L<perlop> for details.
+
+Examples:
+
+ [Step One altTwo]
+ condition=this.is_valid();
+
+ [Step One altTwo]
+ condition=this.is_valid() && cControl.something.is_valid();
+
+=back
+
+=head2 CODE GENERATION
+
+use generate-flow.pl to generate a perl class for yout flow control with 
+a shadow class and a basic template.
+
+ $APP_ROOT/bin/generate-flow.pl -s $SERVICE -U $USECASE
+
+The following files will be generated:
+
+if not existant:
+
+ $APP_ROOT/lib/Hyper/Control/Flow/$SERVICE/F$USECASE.pm
+ $APP_ROOT/var/Hyper/Control/Flow/$SERVICE/$USECASE.htc
+
+always (previous files will be overwritten):
+
+ $APP_ROOT/lib/Hyper/Control/Flow/$SERVICE/_F$USECASE.pm
+
+=head2 YOUR CODE
+
+Each Step will call a method named action_$STEP_NAME if existant. 
+
+This methods may gather data from interfaces, perform interface calls etc.
+
+You should place your code and template into 
+
+ $APP_ROOT/lib/Hyper/Control/Flow/$SERVICE/F$USECASE.pm
+ $APP_ROOT/var/Hyper/Control/Flow/$SERVICE/$USECASE.htc
+
+=head1 RCS INFORMATIONS
+
+=over
+
+=item ID
+
+$Id$
+
+=item Revision
+
+Revision $Revision$, $HeadURL$, $Date$
+
+=back
+
+=head1 AUTHOR
+
+ Andreas Specht  C<< <ACID@cpan.org> >>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (c) 2007, Andreas Specht C<< <ACID@cpan.org> >>. All rights reserved.
+
+This file is part of Hyper.
+
+This file is free software - you may distribute/modify it under the same 
+terms as perl itself. 
+
+=cut

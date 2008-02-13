@@ -1,0 +1,16 @@
+<%IF title %><%= title %><%ELSE%>Hyper::Error - Error occured<%/IF%>
+==
+<%IF show_details %><%LOOP stack %>[<%= _.package ESCAPE=HTML %>] <%= _.sub ESCAPE=HTML %> at <%= _.file %> in line <%= _.line %>
+<%/LOOP%>
+
+Message
+==
+<%LOOP messages %><%= _ %>
+<%/LOOP%>
+
+Environment
+==
+<%EACH environment%><%= __key__ %>=<%= __value__ ESCAPE=HTML %>
+<%/EACH%>
+<%ELSE%><%IF short_message %><%= short_message %><%ELSE%> unknown error <%/IF%>
+<%/IF%>

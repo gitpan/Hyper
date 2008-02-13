@@ -1,0 +1,11 @@
+<table>
+    <tr>
+        <th colspan="2">MyTest - Minimal::First</th>
+    </tr>
+
+
+
+    <tr>
+        <td colspan="2">powered by Perl and the Hyper Framework</td>
+    </tr>
+</table>

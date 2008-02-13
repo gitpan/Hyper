@@ -1,0 +1,1 @@
+<input name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" type="submit" class="button" value="<%TEXT VALUE="submit" ESCAPE=HTML%>" />

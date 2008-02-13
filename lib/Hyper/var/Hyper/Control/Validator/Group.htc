@@ -1,0 +1,1 @@
+<div id="<%= this.get_name %>" style="color: #F00;"><%IF this.all_roles_valid %><%= this.get_first_invalid_validator.get_html %><%/IF%></div>

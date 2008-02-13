@@ -1,0 +1,3 @@
+<%UNLESS this.get_is_valid %>
+    <%TEXT VALUE="Password mismatch" %>
+<%/UNLESS%>

@@ -1,0 +1,30 @@
+<%IF header %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title><%= service %> - <%= usecase %></title>
+        <script type="text/javascript" src="/cp/javascript/prototype.js"></script>
+        <script type="text/javascript" src="/cp/javascript/widget.js"></script>
+        <style type="text/css">
+            body,td,a,p,.h                      { font-family:arial,sans-serif }
+            html                                { width: 100%; }
+            body                                { width: 800px; font-size: small; }
+            .Hyper_Form.table                   { width: 100%; }
+            .Hyper_Form.table tr td             { width: 70%;  }
+            .Hyper_Form.table tr td:first-child { width: 30%;  }
+        </style>
+        <!--[if lt IE 7]>
+            <style>
+                .Hyper_Form.table tr td:first-child {
+                    expression((this.parentNode.firstChild == this) ? "70%" : "30%")
+                }
+            </style>
+        <![endif]-->
+    </head>
+    <body>
+        <form method="post" action="" class="Hyper_Form"><%/IF%><%IF footer %><%EACH hidden %>
+            <input type="hidden" name="<%= __key__ ESCAPE=HTML %>" value="<%= __value__ ESCAPE=HTML %>" /><%/EACH%>
+        </form>
+        <%= debug %>
+        <!-- powered by Perl and the Hyper Framework -->
+    </body>
+</html><%/IF%>

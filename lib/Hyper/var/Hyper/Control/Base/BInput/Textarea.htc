@@ -1,0 +1,1 @@
+<textarea name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" rows="10" cols="29"><%= this.get_value ESCAPE=HTML %></textarea>

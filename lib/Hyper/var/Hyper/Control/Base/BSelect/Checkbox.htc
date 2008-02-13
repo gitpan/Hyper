@@ -1,0 +1,3 @@
+<%LOOP this.get_elements %>
+    <input type="checkbox" name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" value="<%= _.value ESCAPE=HTML %>"<%IF _.is_selected %> checked="checked"<%/IF%>><%= _.data ESCAPE=HTML %></input>
+<%/LOOP%>

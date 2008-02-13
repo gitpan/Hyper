@@ -1,0 +1,9 @@
+<div class="Hyper_Widget_MultiSelect">
+    <ul id="<%= this.get_name ESCAPE=HTML %>">
+    <%LOOP this.get_elements %>
+        <li value="<%= _.value ESCAPE=HTML %>">
+            <%= _.data ESCAPE=HTML %>
+        </li>
+    <%/LOOP%>
+    </ul>
+</div>

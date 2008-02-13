@@ -1,0 +1,1 @@
+<input name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" type="file" value="<%= this.get_value ESCAPE=HTML %>" />

@@ -1,0 +1,34 @@
+=head1 NAME
+
+Hyper::Manual::Overwiew
+
+=head1 DESCRIPTION
+
+The Hyper Framework consist of two main parts:
+
+=over
+
+=item * A runtime environment for (generated) Control elements
+
+=item * A template-driven Code Generator
+
+=back
+
+There are two main groups of control elements: 
+
+=over 
+
+=item * Control Container elements
+
+Control containers are basically complex widgets made up of simple (or other 
+complex) widgets.
+
+=item * Control Flow elements
+
+Control Flow elements model the workflow for a specific usecase. Control flow 
+elements combine a number of B<Steps> displaying simple or complex Controls 
+with a number of transitions.
+
+=back
+
+=cut   

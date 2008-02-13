@@ -1,0 +1,7 @@
+<script type="text/javascript">
+    JSAN.use('Hyper.Widget.NSelect');
+</script>
+<%LOOP this.get_selects %><%INCLUDE NAME="PNSelect_Select.htc" %><%/LOOP%>
+<script type="text/javascript">
+    new Hyper.Widget.NSelect([<%LOOP this.get_selects JOIN=", " %>'<%= _.get_name %>'<%/LOOP%>]);
+</script>

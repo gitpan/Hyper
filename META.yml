@@ -1,0 +1,244 @@
+---
+name: Hyper
+version: 0.02
+author:
+  - 'Andreas Specht  C<< <ACID@cpan.org> >>'
+abstract: Hyper Framework
+license: artistic
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
+requires:
+  CGI: 0
+  Cache::FileCache: 0
+  Class::Std: 0.0.8
+  Class::Std::Storable: 0
+  Config::IniFiles: 0
+  Cwd: 0
+  Data::Dumper: 0
+  Data::UUID: 0
+  English: 0
+  File::Basename: 0
+  File::Find: 0
+  File::Path: 0
+  File::Spec: 0
+  HTML::Template::Compiled: 0.88
+  HTML::Template::Compiled::Expression: 0
+  HTML::Template::Compiled::Utils: 0
+  IO::File: 0
+  JSON::XS: 2.01
+  List::MoreUtils: 0
+  Perl6::Export::Attrs: 0
+  Readonly: 0
+  Scalar::Util: 0
+  Storable: 0
+  UNIVERSAL::require: 0
+  base: 0
+  version: 0
+build_requires:
+  File::Basename: 0
+  File::Find: 0
+  Test::Class: 0
+  Test::Exception: 0
+  Test::More: 0
+  Test::Pod: 0
+  Test::Pod::Coverage: 0
+provides:
+  Hyper:
+    file: lib/Hyper.pm
+    version: v0.1.0
+  Hyper::Application:
+    file: lib/Hyper/Application.pm
+    version: v0.1.0
+  Hyper::Application::Default:
+    file: lib/Hyper/Application/Default.pm
+    version: v0.1.0
+  Hyper::Application::Minimal:
+    file: lib/Hyper/Application/Minimal.pm
+    version: v0.1.0
+  Hyper::Config::Object::Context:
+    file: lib/Hyper/Config/Object/Context.pm
+    version: v0.1.0
+  Hyper::Config::Object::Control:
+    file: lib/Hyper/Config/Object/Control.pm
+    version: v0.1.0
+  Hyper::Config::Object::Control::Validator:
+    file: lib/Hyper/Config/Object/Control/Validator.pm
+    version: v0.1.0
+  Hyper::Config::Object::Default:
+    file: lib/Hyper/Config/Object/Default.pm
+    version: v0.1.0
+  Hyper::Config::Object::Step:
+    file: lib/Hyper/Config/Object/Step.pm
+    version: v0.1.0
+  Hyper::Config::Object::Transition:
+    file: lib/Hyper/Config/Object/Transition.pm
+    version: v0.1.0
+  Hyper::Config::Object::Validator::Group:
+    file: lib/Hyper/Config/Object/Validator/Group.pm
+    version: v0.1.0
+  Hyper::Config::Object::Validator::Named:
+    file: lib/Hyper/Config/Object/Validator/Named.pm
+    version: v0.1.0
+  Hyper::Config::Object::Validator::Single:
+    file: lib/Hyper/Config/Object/Validator/Single.pm
+    version: v0.1.0
+  Hyper::Config::Reader:
+    file: lib/Hyper/Config/Reader.pm
+    version: v0.1.0
+  Hyper::Config::Reader::Container:
+    file: lib/Hyper/Config/Reader/Container.pm
+    version: v0.1.0
+  Hyper::Config::Reader::Context:
+    file: lib/Hyper/Config/Reader/Context.pm
+    version: v0.1.0
+  Hyper::Config::Reader::Flow:
+    file: lib/Hyper/Config/Reader/Flow.pm
+    version: v0.1.0
+  Hyper::Container:
+    file: lib/Hyper/Container.pm
+    version: v0.1.0
+  Hyper::Context:
+    file: lib/Hyper/Context.pm
+    version: v0.1.0
+  Hyper::Control:
+    file: lib/Hyper/Control.pm
+    version: v0.1.0
+  Hyper::Control::Base:
+    file: lib/Hyper/Control/Base.pm
+    version: v0.1.0
+  Hyper::Control::Base::BCheckbox:
+    file: lib/Hyper/Control/Base/BCheckbox.pm
+    version: v0.1.0
+  Hyper::Control::Base::BInput:
+    file: lib/Hyper/Control/Base/BInput.pm
+    version: v0.1.0
+  Hyper::Control::Base::BPushButton:
+    file: lib/Hyper/Control/Base/BPushButton.pm
+    version: v0.1.0
+  Hyper::Control::Base::BSelect:
+    file: lib/Hyper/Control/Base/BSelect.pm
+    version: v0.1.0
+  Hyper::Control::Base::BTree:
+    file: lib/Hyper/Control/Base/BTree.pm
+    version: v0.1.0
+  Hyper::Control::Base::BUpload:
+    file: lib/Hyper/Control/Base/BUpload.pm
+    version: v0.1.0
+  Hyper::Control::Container:
+    file: lib/Hyper/Control/Container.pm
+    version: v1.0.0
+  Hyper::Control::Flow:
+    file: lib/Hyper/Control/Flow.pm
+    version: v1.0.0
+  Hyper::Control::Primitive:
+    file: lib/Hyper/Control/Primitive.pm
+    version: v0.1.0
+  Hyper::Control::Primitive::NSelect:
+    file: lib/Hyper/Control/Primitive/NSelect.pm
+    version: v0.2.0
+  Hyper::Control::Primitive::XSelect:
+    file: lib/Hyper/Control/Primitive/XSelect.pm
+  Hyper::Control::Template:
+    file: lib/Hyper/Control/Template.pm
+    version: v0.1.0
+  Hyper::Control::Validator:
+    file: lib/Hyper/Control/Validator.pm
+    version: v0.1.0
+  Hyper::Control::Validator::Group:
+    file: lib/Hyper/Control/Validator/Group.pm
+    version: v0.1.0
+  Hyper::Control::Validator::Single:
+    file: lib/Hyper/Control/Validator/Single.pm
+    version: v0.1.0
+  Hyper::Debug:
+    file: lib/Hyper/Debug.pm
+    version: v0.1.0
+  Hyper::Error:
+    file: lib/Hyper/Error.pm
+    version: v0.1.0
+  Hyper::Functions:
+    file: lib/Hyper/Functions.pm
+    version: v0.1.0
+  Hyper::Identifier:
+    file: lib/Hyper/Identifier.pm
+    version: v0.1.0
+  Hyper::Name:
+    file: lib/Hyper/Name.pm
+    version: v0.1.0
+  Hyper::Persistent:
+    file: lib/Hyper/Persistent.pm
+    version: v0.1.0
+  Hyper::Request::Default:
+    file: lib/Hyper/Request/Default.pm
+    version: v0.1.0
+  Hyper::Request::ModPerl2:
+    file: lib/Hyper/Request/ModPerl2.pm
+    version: v0.1.0
+  Hyper::Singleton:
+    file: lib/Hyper/Singleton.pm
+    version: v0.1.0
+  Hyper::Singleton::CGI:
+    file: lib/Hyper/Singleton/CGI.pm
+    version: v0.1.0
+  Hyper::Singleton::Container:
+    file: lib/Hyper/Singleton/Container.pm
+    version: v0.1.0
+  Hyper::Singleton::Container::Validator:
+    file: lib/Hyper/Singleton/Container/Validator.pm
+    version: v0.1.0
+  Hyper::Singleton::Container::Validator::Group:
+    file: lib/Hyper/Singleton/Container/Validator/Group.pm
+    version: v0.1.0
+  Hyper::Singleton::Container::Validator::Single:
+    file: lib/Hyper/Singleton/Container/Validator/Single.pm
+    version: v0.1.0
+  Hyper::Singleton::Context:
+    file: lib/Hyper/Singleton/Context.pm
+  Hyper::Singleton::Debug:
+    file: lib/Hyper/Singleton/Debug.pm
+    version: v0.1.0
+  Hyper::Template:
+    file: lib/Hyper/Template.pm
+    version: v0.1.0
+  Hyper::Template::HTC:
+    file: lib/Hyper/Template/HTC.pm
+    version: v0.1.0
+  Hyper::Template::HTC::Compiler:
+    file: lib/Hyper/Template/HTC/Compiler.pm
+    version: v0.1.0
+  Hyper::Template::HTC::Plugin::Text:
+    file: lib/Hyper/Template/HTC/Plugin/Text.pm
+    version: v0.1.0
+  Hyper::Template::Toolkit:
+    file: lib/Hyper/Template/Toolkit.pm
+    version: v0.1.0
+  Hyper::Translator:
+    file: lib/Hyper/Translator.pm
+    version: v0.1.0
+  Hyper::Translator::Noop:
+    file: lib/Hyper/Translator/Noop.pm
+    version: v0.1.0
+  Hyper::Validator:
+    file: lib/Hyper/Validator.pm
+    version: v0.1.0
+  Hyper::Validator::Group:
+    file: lib/Hyper/Validator/Group.pm
+    version: v0.1.0
+  Hyper::Validator::Group::Compare:
+    file: lib/Hyper/Validator/Group/Compare.pm
+    version: v0.1.0
+  Hyper::Validator::Single:
+    file: lib/Hyper/Validator/Single.pm
+    version: v0.1.0
+  Hyper::Validator::Single::Required:
+    file: lib/Hyper/Validator/Single/Required.pm
+    version: v0.1.0
+  Hyper::Workflow::Default:
+    file: lib/Hyper/Workflow/Default.pm
+    version: v0.1.0
+generated_by: Module::Build version 0.2806
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
+no_index:
+  namespace: Hyper::var

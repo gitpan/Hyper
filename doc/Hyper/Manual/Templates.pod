@@ -1,0 +1,90 @@
+=pod
+
+=head1 NAME
+
+Hyper::Manual::Templates - all you want to know about templates
+
+=head1 The basics
+
+The Hyper Framework can use different Template parsers / Content generators.
+The templated parser is configured via Hyper::Singleton::Context's
+set_template_class method somewhere in your application:
+
+ Hyper::Singleton::Context->singleton
+    ->set_template_class('Hyper::Template');
+
+That is the default, so usually you do not need to care about it.
+
+=head1 Hyper::Template
+
+Hyper::Template is based on HTML::Template::Compiled, too, but adds
+the Hyper::HTC::Plugin::Text plugin. This plugin introduces a new template tag,
+TEXT, which is used for inserting translated texts.
+
+Translation is performed via the currently configured Translation object,
+which is set via Hyper::Singleton::Context.
+
+=head2 Using the TEXT tag
+
+Imagine you got the following labels in your label translator:
+
+ test1 => q{There's something rotten},
+ test2 => q{Your [_1] has [*_2,handbrake,handbrakes,no handbrake]},
+ test3 => q{
+
+ * [*,_1,apple,apples,no apple]
+ * [*,_2,bananas,bananas,not even one banana]
+
+ }
+
+As you may gess from the label contents, test2 uses maketext while test3
+combines maketext with textile formatting.
+
+Now imagine a template:
+
+ <%TEXT VALUE="test1" %>
+ <%TEXT brakes VALUE="test2" %>
+ <%TEXT fruits VALUE="test3" %>
+
+Now we set parameters on the template, say:
+
+ $htc->params( brakes => [ 2 ], fruits => [1,0] );
+
+and process the template with
+
+ $htc->output();
+
+It will be transformed into
+
+ There's something rotten
+ Your bike has 2 handbrakes
+ <ul>
+ <li>1 apple</li>
+ <li>not even one banana</li>
+ </ul>
+
+Got it?
+
+To be honest, in the Hyper Framework you usually don't have to pass parameters
+to the template or call it's output method - the framework does it for you.
+
+=head1 AUTHOR
+
+ Martin Kutter <kutterma@users.sourceforge.net>
+
+=head1 COPYING
+
+
+
+=head1 Repository information
+
+ $ID: $
+
+ $LastChangedDate: $
+ $LastChangedRevision: $
+ $LastChangedBy: $
+
+ $HeadURL: $
+
+=cut
+

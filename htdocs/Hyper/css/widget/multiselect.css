@@ -1,0 +1,81 @@
+/* Common Container (Button, Draggable) */
+.Hyper_Widget_MultiSelect_ButtonContainer, .Hyper_Widget_MultiSelect {
+    float:  left;
+    height: 150px;
+}
+
+/* Element Container */
+.Hyper_Widget_MultiSelect {
+    overflow: auto;
+    width:    160px;
+    border:   1px solid #333;
+    padding:  2px;
+}
+
+.Hyper_Widget_MultiSelect ul {
+    width:           100%;
+    height:          100%;
+    list-style-type: none;
+    padding:         0px;
+    margin:          0;
+}
+
+.Hyper_Widget_MultiSelect ul li {
+    width:  100%;
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+}
+
+.Hyper_Widget_MultiSelect ul li.selected, dragging {
+    background-color: #06C;
+    color:            #FFF;
+    cursor:           pointer;
+    border:           1px dotted #EEE;
+}
+ul li.fixed {
+    background-color: #F00;
+}
+
+.Hyper_Widget_MultiSelect ul li.fixed {
+    background-color: #F96;
+    cursor:           default;
+}
+
+.Hyper_Widget_MultiSelect_ButtonContainer {
+    width:       30px;
+    text-align:  center;
+    padding-top: 33px;
+}
+
+/* DragContainer */
+.Hyper_Widget_MultiSelect_DragContainer {
+    background-color: #EEE;
+    list-style-type:  none;
+    padding:          2px;
+    border:           1px solid #333;
+}
+
+/* Buttons */
+.Hyper_Widget_MultiSelect_ButtonContainer input.left, .Hyper_Widget_MultiSelect_ButtonContainer input.right, .Hyper_Widget_MultiSelect_ButtonContainer input.allLeft, .Hyper_Widget_MultiSelect_ButtonContainer input.allRight{
+    border:  0;
+    margin:  2px;
+    height:  19px;
+    width:   20px;
+    cursor:  pointer;
+}
+
+.Hyper_Widget_MultiSelect_ButtonContainer input.left {
+    background-image: url('../../image/widget/multiselect/arrow-left.gif');
+}
+
+.Hyper_Widget_MultiSelect_ButtonContainer input.right {
+    background-image: url('../../image/widget/multiselect/arrow-right.gif');
+}
+
+.Hyper_Widget_MultiSelect_ButtonContainer input.allLeft {
+    background-image: url('../../image/widget/multiselect/arrow-all_left.gif');
+}
+
+.Hyper_Widget_MultiSelect_ButtonContainer input.allRight {
+    background-image: url('../../image/widget/multiselect/arrow-all_right.gif');
+}
