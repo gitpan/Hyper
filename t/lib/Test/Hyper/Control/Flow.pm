@@ -57,9 +57,8 @@ sub two :Test(7) {
 
     # existant viewstate
     ok( $flow->set_state('END') => 'set_state');
-    ok( my $viewstate = $flow->get_state_recursive()
-            => 'get_state_recursive'
-    );
+    is( undef, my $viewstate = $flow->get_state_recursive(), 'get_state_recursive');
+
     ok( $flow->restore_state_recursive($viewstate)
             => 'restore_state_recursive'
     );

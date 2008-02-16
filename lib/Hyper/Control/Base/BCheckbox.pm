@@ -80,19 +80,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: BCheckbox.pm 237 2007-12-05 12:53:43Z ac0v $
+$Id: BCheckbox.pm 317 2008-02-16 01:52:33Z ac0v $
 
 =item Revision
 
-$Revision: 237 $
+$Revision: 317 $
 
 =item Date
 
-$Date: 2007-12-05 13:53:43 +0100 (Wed, 05 Dec 2007) $
+$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
 
 =item HeadURL
 
-$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/branches/0.02/lib/Hyper/Control/Base/BCheckbox.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BCheckbox.pm $
 
 =back
 

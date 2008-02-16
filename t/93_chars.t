@@ -4,9 +4,10 @@ use strict;
 use warnings;
 
 use File::Find;
+use File::Basename;
 use Test::More;
 
-my ($lib_path) = grep { -e $_ && -d $_; } qw(lib ../lib ../blib/lib);
+my $lib_path = dirname(__FILE__) . '/../lib';
 my %LIST;
 find(
     sub {

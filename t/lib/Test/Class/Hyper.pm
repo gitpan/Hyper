@@ -5,15 +5,10 @@ use warnings;
 
 use base qw(Test::Class);
 use Test::More;
-use Hyper::Functions;
-
 use File::Basename;
 
-sub setup :Test(startup => 4) {
-    use_ok 'Hyper::Singleton::Context';
-    use_ok 'Hyper';
-    my $base_path = Hyper::Functions::get_path_from_file(__FILE__);
-    $base_path   .= '/../../../';
+sub setup :Test(setup => 4) {
+    my $base_path = dirname(__FILE__) . '/../../../';
 
     # TODO: reproduce context-setup Error
     #XXX print '__FILE__: ', __FILE__, ' $base_path: ', $base_path, "\n";
@@ -43,13 +38,14 @@ EOT
 
     local $SIG{__WARN__} = sub {
         # Config::IniFiles line 522.
-        return if $_[0] =~ m{\A \Qstat() on unopened filehandle\E}xms;
-        warn @_;
+        $_[0] =~ m{\A \Qstat() on unopened filehandle\E}xms ? () : warn @_;
     };
+    use_ok('Hyper::Singleton::Context');
     ok( Hyper::Singleton::Context->new({
             file => $config,
         }) => 'Context setup'
     );
+    use_ok('Hyper');
     ok( Hyper->new({
             service => 'none',
             usecase => 'none',

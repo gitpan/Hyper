@@ -255,23 +255,23 @@ L<HTML::Template::Compiled::Token>
 
 =item Last changed by
 
-$Author: $
+$Author: ac0v $
 
 =item Id
 
-$Id: $
+$Id: Text.pm 317 2008-02-16 01:52:33Z ac0v $
 
 =item Revision
 
-$Revision: $
+$Revision: 317 $
 
 =item Date
 
-$Date: $
+$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
 
 =item HeadURL
 
-$HeadURL: $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Template/HTC/Plugin/Text.pm $
 
 =back
 

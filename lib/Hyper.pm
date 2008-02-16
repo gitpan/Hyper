@@ -2,7 +2,7 @@ package Hyper;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.01');
+use version; our $VERSION = qv('0.03');
 
 use Class::Std;
 {
@@ -74,7 +74,7 @@ Hyper - The global Hyper Workflow Interface
 
 =head1 VERSION
 
-This document describes Hyper 0.01
+This document describes Hyper 0.03
 
 =head1 SYNOPSIS
 
@@ -134,10 +134,6 @@ Start a hyper workflow (Default, Single Validation, Group Validation)
 
 =back
 
-=head2 _start_workflow
-
-Handler for the Default workflow.
-
 =head1 DIAGNOSTICS
 
 =head1 CONFIGURATION AND ENVIRONMENT
@@ -188,23 +184,23 @@ L<Hyper::Singleton::CGI>
 
 =item Last changed by
 
-$Author: $
+$Author: ac0v $
 
 =item Id
 
-$Id: $
+$Id: Hyper.pm 317 2008-02-16 01:52:33Z ac0v $
 
 =item Revision
 
-$Revision: $
+$Revision: 317 $
 
 =item Date
 
-$Date: $
+$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
 
 =item HeadURL
 
-$HeadURL: $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper.pm $
 
 =back
 

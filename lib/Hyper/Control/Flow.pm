@@ -2,7 +2,7 @@ package Hyper::Control::Flow;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0');
+use version; our $VERSION = qv('1.1');
 
 use base qw(Hyper::Control);
 
@@ -170,7 +170,7 @@ sub get_state_recursive {
     my %object_of = %{$self->get_objects() || {}};
     my $state     = $self->get_state();
 
-    return $state eq 'START'
+    return ( $state eq 'START' || $state eq 'END' )
         ? ()
         : [ $state,
             map {
@@ -253,7 +253,7 @@ Hyper::Control::Flow - base class for all flow and container controls
 
 =head1 VERSION
 
-This document describes Hyper::Control::Flow 1.0
+This document describes Hyper::Control::Flow 1.1
 
 =head1 SYNOPSIS
 
@@ -458,23 +458,23 @@ List::MoreUtils
 
 =item Last changed by
 
-$Author: $
+$Author: ac0v $
 
 =item Id
 
-$Id: $
+$Id: Flow.pm 318 2008-02-16 01:57:57Z ac0v $
 
 =item Revision
 
-$Revision: $
+$Revision: 318 $
 
 =item Date
 
-$Date: $
+$Date: 2008-02-16 02:57:57 +0100 (Sat, 16 Feb 2008) $
 
 =item HeadURL
 
-$HeadURL: $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Flow.pm $
 
 =back
 

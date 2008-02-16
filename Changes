@@ -1,6 +1,15 @@
 Revision history for Hyper
 
-0.02   Wed Feb 20 01:30:00 2007
+0.03   Wed Feb 16 02:55:00 2007
+       * improved error catching
+       * removed crap
+       * pod fixes
+       * fixed prereq
+       * improved tests
+       * updated mod_perl request wrapper
+       * improved handling of continuations
+
+0.02   Wed Feb 13 01:30:00 2007
        Initial CPAN release.
 
 0.01   Tue Nov  6 23:46:00 2007

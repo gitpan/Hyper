@@ -33,7 +33,9 @@ sub import {
     SET_SIGNAL_HANDLER:
     for my $name ( keys %arg_of ) {
         next SET_SIGNAL_HANDLER if ! $arg_of{$name};
-        *{"CORE::GLOBAL::$HANDLER_OF{$name}"} = \&_show_error_message;
+        $main::SIG{'__' . ( uc $HANDLER_OF{$name} ) . '__'}
+            = *{"CORE::GLOBAL::$HANDLER_OF{$name}"}
+            = \&_show_error_message;
     }
 
     return;
@@ -334,23 +336,23 @@ Readonly
 
 =item Last changed by
 
-$Author: $
+$Author: ac0v $
 
 =item Id
 
-$Id: $
+$Id: Error.pm 317 2008-02-16 01:52:33Z ac0v $
 
 =item Revision
 
-$Revision: $
+$Revision: 317 $
 
 =item Date
 
-$Date: $
+$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
 
 =item HeadURL
 
-$HeadURL: $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Error.pm $
 
 =back
 

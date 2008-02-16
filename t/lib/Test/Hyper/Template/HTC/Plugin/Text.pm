@@ -4,11 +4,11 @@ use strict;
 use warnings;
 use Test::More;
 
-use base 'Test::Class::Hyper';
+use base qw(Test::Class::Hyper);
 
-sub startup : Test(startup => 3) {
-    use_ok 'HTML::Template::Compiled';
-    use_ok 'Hyper::Template::HTC::Plugin::Text';
+sub startup : Test(startup => 2) {
+    use_ok('HTML::Template::Compiled');
+    use_ok('Hyper::Template::HTC::Plugin::Text');
 }
 
 sub text_translator_noop :Test(3) {

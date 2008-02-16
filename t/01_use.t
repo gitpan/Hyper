@@ -7,14 +7,16 @@ use File::Find;
 
 BEGIN {
     require lib;
-    lib->import( grep { -d $_; } map { dirname(__FILE__) . "/$_"; }
-        qw(lib ../lib ../blib/lib)
-    );
+    my $lib_path = dirname(__FILE__) . '/../lib';
+    if ( -d $lib_path ) {
+        lib->import($lib_path);
+    }
 }
 our %PATH_OF = (
     t    => dirname(__FILE__),
-    libs => [ grep { -d $_; } map { dirname(__FILE__) . "/$_"; }
-        qw(lib ../lib ../blib/lib) ],
+    libs => [
+        dirname(__FILE__) . '/../lib',
+    ],
 );
 
 my %LIST;

@@ -6,6 +6,9 @@ use version; our $VERSION = qv('0.01');
 
 use Apache2::RequestUtil;
 
+use Readonly;
+Readonly my $PACKAGE => __PACKAGE__;
+
 sub set_note {
     my $note_ref = shift;
     my $pnotes   = Apache2::RequestUtil->request()->pnotes();
@@ -16,8 +19,8 @@ sub set_note {
     }
 
     # store info which pnotes are used
-    $pnotes->{__PACKAGE__} = {
-        %{$pnotes->{__PACKAGE__} || {}},
+    $pnotes->{$PACKAGE} = {
+        %{$pnotes->{$PACKAGE} || {}},
         map { ( $_ => undef ); } @names,
     };
 
@@ -31,7 +34,7 @@ sub get_note {
 sub cleanup {
     my $pnotes = Apache2::RequestUtil->request()->pnotes();
 
-    for my $name ( keys %{$pnotes->{__PACKAGE__} || {}} ) {
+    for my $name ( keys %{$pnotes->{$PACKAGE} || {}} ) {
         delete $pnotes->{$name};
     }
 

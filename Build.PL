@@ -2,7 +2,7 @@ use Module::Build;
 my $build = Module::Build->new(
     dist_abstract      => 'Hyper Framework',
     dist_name          => 'Hyper',
-    dist_version       => '0.02',
+    dist_version       => '0.03',
     module_name        => 'Hyper',
     license            => 'artistic',
     create_makefile_pl => 'traditional',
@@ -24,6 +24,7 @@ my $build = Module::Build->new(
         HTML::Template::Compiled::Utils      => 0,
         HTML::Template::Compiled             => '0.88',
         IO::File                             => 0,
+        IO::Scalar                           => 0,
         JSON::XS                             => '2.01',
         List::MoreUtils                      => 0,
         #Parse::RecDescent                    => 0,
