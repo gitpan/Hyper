@@ -3,26 +3,51 @@ package Hyper::Validator;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('0.01');
+use version; our $VERSION = qv('0.02');
 
 use Class::Std::Storable;
 use base qw(Hyper::Control::Template);
 
-my %is_valid_of :ATTR(:get<is_valid> :default<1>);
+my %is_valid_of     :ATTR(:get<is_valid> :default<1>);
+my %config_of       :ATTR(:name<config>  :default<()>);
+my %_valid_state_of :ATTR();
+
+sub get_next_html { # ToDo: add pod
+    my $template = $_[0]->get_template();
+    $template->param( is_valid => shift @{$_valid_state_of{ident $_[0]}} );
+    return $template->output();
+}
 
 sub get_html {
-    return shift->get_template()->output();
+    my $template = $_[0]->get_template();
+    $template->param( is_valid => $_[0]->get_is_valid() );
+    return $template->output();
 }
 
-sub is_valid {
+sub is_valid { # ToDo: add more pod
     my ($self, @values) = @_;
 
-    return $is_valid_of{ident $self} = $self->VALIDATE(@values);
+    my $valid_ref
+        = $_valid_state_of{ident $self}
+        = [ map { scalar $self->VALIDATE($_) } @values ];
+
+    return $is_valid_of{ident $self} = @values == grep { $_; } @{$valid_ref};
 }
+
+sub _set_valid_state :RESTRICTED {
+    $_valid_state_of{ident $_[0]} = $_[1];
+}
+
+sub _set_is_valid :RESTRICTED {
+    $is_valid_of{ident $_[0]} = $_[1];
+}
+
 
 1;
 
 __END__
+
+#ToDo: FIX POD for _set_valid_state and _set_is_valid
 
 =pod
 
@@ -32,7 +57,7 @@ Hyper::Validator - Validator base class for all validator classes
 
 =head1 VERSION
 
-This document describes Hyper::Validator 0.01
+This document describes Hyper::Validator 0.02
 
 =head1 SYNOPSIS
 
@@ -67,15 +92,33 @@ of this validator (eg. a specific input or text field object)
 
     $object->get_html();
 
-Add this param to the template and return the return value
-of the output method of template.
+Add the the 'is_valid' param to the template and return the
+return value of the output method of template.
+
+The 'is_valid' param indicates if any value was invalid.
+
+=head2 get_next_html
+
+    # validate an object with one valid and one invalid value
+
+    # show valid message
+    $object->get_next_html();
+
+    # show invalid message
+    $object->get_next_html();
+
+Works like get_html expect that the 'is_valid' param indicates
+if the current value (we iterate over the values validation state)
+is valid. The values are handled iterative.
 
 =head2 is_valid
 
     $object->is_valid();
 
 Calls the object method VALIDATE, stores the return value
-in the object attribute is_valid and returns it.
+in the object attribute is_valid and a list of valid/invalid states
+in the private attribute _valid_state_of. The return value indicates
+if all values are valid.
 
 =head1 DIAGNOSTICS
 
@@ -113,19 +156,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Validator.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Validator.pm 474 2008-05-29 13:25:22Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 474 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-05-29 15:25:22 +0200 (Do, 29 Mai 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Validator.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Validator.pm $
 
 =back
 

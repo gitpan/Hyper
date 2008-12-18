@@ -16,7 +16,7 @@ my %template_of          :ATTR(:set<template>);
 my %template_filename_of :ATTR(:name<template_filename> :default<q{}>);
 
 sub START {
-    if ( $_[0]->isa('Hyper::Control') && ( my $config = $_[0]->get_config() ) ) {
+    if ( $_[0]->can('get_config') && ( my $config = $_[0]->get_config() ) ) {
         $template_filename_of{$_[1]} ||= $config->get_template();
     }
     return $_[0];
@@ -180,19 +180,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Template.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Template.pm 347 2008-04-04 14:41:40Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 347 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-04-04 16:41:40 +0200 (Fr, 04 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Template.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Template.pm $
 
 =back
 

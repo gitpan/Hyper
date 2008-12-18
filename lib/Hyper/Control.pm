@@ -2,7 +2,7 @@ package Hyper::Control;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.01');
+use version; our $VERSION = qv('0.02');
 
 use base qw(Hyper::Container);
 use Class::Std::Storable;
@@ -11,15 +11,30 @@ use Scalar::Util;
 use Hyper::Error;
 use Hyper::Functions;
 
-my %dispatch_of :ATTR(:name<dispatch> :default<()>);
-my %config_of   :ATTR(:name<config>  :default<()>);
-my %owner_of    :ATTR(:name<owner>   :default<()>);
+my %dispatch_of :ATTR(:name<dispatch>   :default<()>);
+my %config_of   :ATTR(:name<config>     :default<()>);
+my %owner_of    :ATTR(:get<owner>       :default<()>);
+
+sub BUILD {
+    # use @_ for speed
+    # $self->set_owner( delete $arg_ref->{ owner })
+    $_[0]->set_owner(delete $_[2]->{owner});
+    return $_[0];
+}
 
 sub START {
     if ( my $config = $_[0]->get_config() ) {
-        $dispatch_of{$_[1]} ||= $config->get_dispatch();
+        if ($config->can('get_dispatch')) {
+            $dispatch_of{$_[1]} ||= $config->get_dispatch();
+        }
     }
 
+    return $_[0];
+}
+
+sub set_owner {
+    $owner_of{ident $_[0]} = $_[1];
+    Scalar::Util::weaken($owner_of{ident $_[0]});
     return $_[0];
 }
 
@@ -57,8 +72,7 @@ sub get_value_recursive {
         shift @{$parts_ref};
     }
 
-    GET_VALUE:
-    for my $name ( @{$parts_ref} ) {
+    GET_VALUE: for my $name ( @{$parts_ref} ) {
         # is blessed object ?
         if ( Scalar::Util::blessed($last_value) ) {
             my $get_via_name_ref  = $last_value->can("get_$name");
@@ -67,6 +81,7 @@ sub get_value_recursive {
                 ? do {
                       # via get_$name
                       my $value_of_get = $get_via_name_ref->($last_value);
+
                       defined $value_of_get || ! $autovivification
                           ? $value_of_get
                           : do {
@@ -76,7 +91,17 @@ sub get_value_recursive {
                             };
                   }
                 : $last_value->isa('Hyper::Container') # via get_object method
-                      ? $last_value->get_object($name)
+                      ? do {
+                            my $object = $last_value->get_object($name);
+
+                            Scalar::Util::blessed($object)
+                                ? $object
+                                : throw(
+                                      "can't get object with name >$name< in >"
+                                      . ( ref $self )
+                                      . '<'
+                                  );
+                        }
                       : throw(
                             "getting >$name< is not possible  in >"
                             . (ref $self)
@@ -102,6 +127,11 @@ sub STORABLE_thaw_post {
         or throw("can't find method >DISPATCH< in class >$class<");
     $dispatch_ref->($self);
 
+    # Storable restores weak references as normal references
+    # weaken up-reference in tree after thawing
+    Scalar::Util::weaken( $owner_of{ ident $self } )
+        if defined $owner_of{ ident $self };
+
     return $self;
 }
 
@@ -117,7 +147,7 @@ Hyper::Control - base class for all control classes
 
 =head1 VERSION
 
-This document describes Hyper::Control 0.01
+This document describes Hyper::Control 0.02
 
 =head1 SYNOPSIS
 
@@ -211,23 +241,23 @@ Scalar::Util
 
 =item Last changed by
 
-$Author: ac0v $
+$Author: kutterma $
 
 =item Id
 
-$Id: Control.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Control.pm 497 2008-06-09 13:43:40Z kutterma $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 497 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-06-09 15:43:40 +0200 (Mo, 09 Jun 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control.pm $
 
 =back
 

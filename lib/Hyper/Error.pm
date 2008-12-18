@@ -2,7 +2,7 @@ package Hyper::Error;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.01');
+use version; our $VERSION = qv('0.02');
 
 use autouse 'Apache2::Log';
 use autouse 'Data::Dumper';
@@ -48,9 +48,10 @@ sub _is_eval_context {
 
 sub _show_error_message {
     # prevent from endless loops if we die internaly
-    local *CORE::GLOBAL::die;
+    local (*CORE::GLOBAL::die, $main::SIG{__DIE__});
     { no warnings qw(redefine);
-      *CORE::GLOBAL::die = sub { CORE::die(@_) };
+      *CORE::GLOBAL::die = $main::SIG{__DIE__}
+                         = sub { CORE::die(@_) };
     }
 
     my @messages        = @_;
@@ -220,7 +221,7 @@ Hyper::Error - catch die and/or warn, offers throw method
 
 =head1 VERSION
 
-This document describes Hyper::Error 0.01
+This document describes Hyper::Error 0.02
 
 =head1 SYNOPSIS
 
@@ -340,19 +341,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Error.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Error.pm 522 2008-12-18 16:05:57Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 522 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-12-18 17:05:57 +0100 (Do, 18 Dez 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Error.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Error.pm $
 
 =back
 

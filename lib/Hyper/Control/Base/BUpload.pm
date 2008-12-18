@@ -8,14 +8,14 @@ use base qw(Hyper::Control::Base);
 use Class::Std::Storable;
 
 use Hyper::Singleton::CGI;
-use File::Basename;
+use File::Basename ();
 
 sub get_filehandle {
     return Hyper::Singleton::CGI->singleton()->upload(shift->get_name());
 }
 
 sub get_filename {
-    return (File::Basename->fileparse(shift->get_value()))[0];
+    return (split m{\\|/}, shift->get_value())[-1];
 }
 
 1;
@@ -91,19 +91,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: BUpload.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: BUpload.pm 370 2008-04-14 19:29:23Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 370 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-04-14 21:29:23 +0200 (Mo, 14 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BUpload.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Base/BUpload.pm $
 
 =back
 

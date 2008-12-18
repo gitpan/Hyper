@@ -1,4 +1,4 @@
-Hyper version 0.03
+Hyper version 0.04
 
 This module provides the Web 3.0 Pioneering Framework.
 
@@ -23,7 +23,7 @@ Alternatively, to install with Module::Build, you can use the following commands
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2007, Andreas Specht
+Copyright (C) 2008, Andreas Specht
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

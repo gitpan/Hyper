@@ -6,6 +6,7 @@ use warnings;
 use base qw(Hyper::Control::Base::BSelect);
 
 use Class::Std::Storable;
+use Scalar::Util;
 use Hyper::Functions qw(listify);
 
 my %selected_of         :ATTR(:get<selected>);
@@ -52,7 +53,7 @@ sub _set_selected_by_callback :PROTECTED {
                     push @{$deselected_value_of{$ident}}, $element_index;
                     ();
                   };
-        } @{$self->get_elements()}
+        } @{$self->get_elements() || []}
     ]);
 
     return $self;
@@ -98,17 +99,18 @@ sub set_value {
     # select elements by index
     my %selected_index_of = map { $_ => undef; } @{$value_ref};
 
-    $selected_of{$ident}         = [];
     $deselected_of{$ident}       = [];
     $deselected_value_of{$ident} = [];
-    for my $i ( 0 .. $#{$element_ref} ) {
-        if ( exists $selected_index_of{$i} ) {
-            push @{$selected_of{$ident}}, $element_ref->[$i];
-        }
-        else {
-            push @{$deselected_of{$ident}}, $element_ref->[$i];
-            push @{$deselected_value_of{$ident}}, $i;
-        }
+    $selected_of{$ident}         = [
+        map {
+            Scalar::Util::looks_like_number($_) ? $element_ref->[$_] : ();
+        } @{$value_ref}
+    ];
+
+    FIND_DESELECTED: for my $i ( 0 .. $#{$element_ref} ) {
+        next FIND_DESELECTED if exists $selected_index_of{$i};
+        push @{$deselected_of{$ident}}, $element_ref->[$i];
+        push @{$deselected_value_of{$ident}}, $i;
     }
 
     $self->SUPER::set_value($value_ref);

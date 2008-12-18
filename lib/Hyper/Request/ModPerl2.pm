@@ -10,7 +10,7 @@ use Readonly;
 Readonly my $PACKAGE => __PACKAGE__;
 
 sub set_note {
-    my $note_ref = shift;
+    my $note_ref = $_[-1];
     my $pnotes   = Apache2::RequestUtil->request()->pnotes();
     my @names    = keys %{$note_ref};
 

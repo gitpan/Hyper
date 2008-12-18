@@ -2,7 +2,7 @@ package Hyper;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.03');
+use version; our $VERSION = qv('0.04');
 
 use Class::Std;
 {
@@ -74,7 +74,7 @@ Hyper - The global Hyper Workflow Interface
 
 =head1 VERSION
 
-This document describes Hyper 0.03
+This document describes Hyper 0.04
 
 =head1 SYNOPSIS
 
@@ -188,19 +188,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Hyper.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Hyper.pm 522 2008-12-18 16:05:57Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 522 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-12-18 17:05:57 +0100 (Do, 18 Dez 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper.pm $
 
 =back
 

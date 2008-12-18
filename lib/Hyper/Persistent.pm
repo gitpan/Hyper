@@ -62,7 +62,7 @@ sub freeze {
     $cache->set(
         controls => {
             map {
-                $_->get_name() => Storable::freeze($_);
+                $_->get_name() => $_;
             } listify($arg_ref->{controls})
         },
     );
@@ -215,19 +215,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Persistent.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Persistent.pm 357 2008-04-09 08:54:54Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 357 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-04-09 10:54:54 +0200 (Mi, 09 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Persistent.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Persistent.pm $
 
 =back
 

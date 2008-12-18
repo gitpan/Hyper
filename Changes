@@ -1,5 +1,13 @@
 Revision history for Hyper
 
+0.04   Thu Dec 18 17:06:37 CET 2008
+       * fixed CPAN ticket 41807
+
+0.03_03
+       * fixed template configuration for validators
+       * fixed mod_perl2 singletons
+       * speed++ for persinstent
+
 0.03   Wed Feb 16 02:55:00 2007
        * improved error catching
        * removed crap

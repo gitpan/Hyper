@@ -6,20 +6,35 @@ use version; our $VERSION = qv('0.01');
 
 use base qw(Hyper::Control::Base);
 use Class::Std::Storable;
+use Scalar::Util;
 
 my %childs_of   :ATTR(:set<childs>   :get<childs> :default<[]>);
-my %parent_of   :ATTR(:get<parent>   :set<parent>);
-my %data_of     :ATTR(:get<data>     :set<data>);
+my %parent_of   :ATTR(:get<parent>);
+my %data_of     :ATTR(:name<data>    :default<()>);
 my %position_of :ATTR(:get<position> :set<position>);
+
+sub set_parent {
+    $parent_of{ ident $_[0] } = $_[1];
+    Scalar::Util::weaken($parent_of{ ident $_[0] });
+    return $_[0];
+}
+
+sub STORABLE_thaw_post {
+    # Storable restores weak references as normal references
+    # weaken up-reference in tree after thawing
+    Scalar::Util::weaken($parent_of{ ident $_[0] })
+        if defined $parent_of{ ident $_[0] };
+}
 
 sub add_child {
     my $self  = shift;
-    my $child = shift;
+    my $i     = scalar @{$childs_of{ident $self}};
 
-    $child->set_parent($self);
-    $child->set_position(scalar @{$childs_of{ident $self}});
-
-    push @{$childs_of{ident $self}}, $child;
+    push @{$childs_of{ident $self}}, map {
+        $_->set_parent($self);
+        $_->set_position($i++);
+        $_;
+    } @_;
 
     return $self;
 }
@@ -53,6 +68,16 @@ sub get_template_childs {
     return $_[0]->has_childs()
         ? [ map { {this => $_ }; } @{$_[0]->get_childs()} ]
         : ();
+}
+
+sub get_path {
+    my $current = shift;
+    my @path;
+
+    do {
+        my $position = $current->get_position();
+        unshift @path, $position if defined($position) or return \@path;
+    } while ( $current = $current->get_parent() );
 }
 
 1;
@@ -176,23 +201,23 @@ Class::Std::Storable
 
 =item Last changed by
 
-$Author: ac0v $
+$Author: kutterma $
 
 =item Id
 
-$Id: BTree.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: BTree.pm 497 2008-06-09 13:43:40Z kutterma $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 497 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-06-09 15:43:40 +0200 (Mo, 09 Jun 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BTree.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Base/BTree.pm $
 
 =back
 

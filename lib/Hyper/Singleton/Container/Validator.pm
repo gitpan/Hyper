@@ -11,7 +11,7 @@ sub add_validators_of {
     my $self    = shift;
     my $arg_ref = shift;
 
-    $self->set_object({
+    $self->set_objects({
         %{$self->get_objects() || {}},
         %{$arg_ref},
     });
@@ -102,19 +102,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Validator.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Validator.pm 474 2008-05-29 13:25:22Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 474 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-05-29 15:25:22 +0200 (Do, 29 Mai 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Singleton/Container/Validator.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Singleton/Container/Validator.pm $
 
 =back
 

@@ -8,7 +8,6 @@ use base qw(HTML::Template::Compiled);
 use Hyper;
 use Hyper::Template; # don't inherit; contains only class methods
 use Hyper::Functions;
-use Hyper::Singleton::Context;
 use Hyper::Template::HTC::Compiler;
 
 use File::Basename;
@@ -199,10 +198,6 @@ Hyper::Functions
 
 =item *
 
-Hyper::Singleton::Context
-
-=item *
-
 File::Basename
 
 =item *
@@ -229,19 +224,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: HTC.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: HTC.pm 433 2008-04-30 01:56:24Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 433 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-04-30 03:56:24 +0200 (Mi, 30 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Template/HTC.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Template/HTC.pm $
 
 =back
 

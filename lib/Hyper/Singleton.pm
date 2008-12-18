@@ -8,7 +8,7 @@ use Class::Std::Storable;
 use Hyper::Functions;
 
 our $REQUEST_CLASS
-    = ( exists $ENV{MOD_PERL} && $ENV{MOD_PERL} > 2 )
+    = ( exists $ENV{MOD_PERL_API_VERSION} && $ENV{MOD_PERL_API_VERSION} == 2 )
     ? 'Hyper::Request::ModPerl2'
     : 'Hyper::Request::Default';
 
@@ -155,19 +155,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Singleton.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Singleton.pm 351 2008-04-08 10:17:43Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 351 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-04-08 12:17:43 +0200 (Di, 08 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Singleton.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Singleton.pm $
 
 =back
 

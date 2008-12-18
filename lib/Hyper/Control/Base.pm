@@ -13,7 +13,7 @@ use Hyper::Singleton::CGI;
 use Hyper::Singleton::Debug;
 
 my %value_of             :ATTR(:set<value>);
-my %validator_control_of :ATTR(:set<validator_control> :get<validator_control>);
+my %validator_control_of :ATTR(:set<validator_control>);
 
 sub START {
     my $self   = shift;
@@ -46,7 +46,7 @@ sub START {
 }
 
 sub clear {
-    $value_of{ident $_[0]} = ();
+    $_[0]->set_value(undef);
     return $_[0];
 }
 
@@ -76,22 +76,24 @@ sub populate_show_state {
     return $_[0];
 }
 
+sub get_validator_control {
+    my $self = shift;
+
+    return $validator_control_of{ident $self}
+        ||= do {
+                # build the validator control (used as error message container)
+                my $config = $self->get_config() ? $self->get_config()->get_validator_control() : ();
+                my $validator_control = Hyper::Functions::use_via_string(
+                    $config ? $config->get_class() : 'Hyper::Control::Validator::Single'
+                )->new({ config => $config, owner => $self });
+                $self->set_validator_control($validator_control);
+                $validator_control;
+            };
+}
+
 sub add_single_validator {
-    my ($self, @validators) = @_;
-    my $validator_control
-        = $self->get_validator_control()
-       || do {
-              # build the validator control (used as error message container)
-              my $config = $self->get_config() ? $self->get_config()->get_validator_control() : ();
-              my $validator_control = Hyper::Functions::use_via_string(
-                  $config ? $config->get_class() : 'Hyper::Control::Validator::Single'
-                  )->new({ config => $config, owner => $self });
-              $self->set_validator_control($validator_control);
-              $validator_control;
-          };
-
-    $validator_control->add_single_validator(@validators);
-
+    my $self = shift;
+    $self->get_validator_control()->add_single_validator(@_);
     return $self;
 }
 
@@ -313,19 +315,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Base.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Base.pm 474 2008-05-29 13:25:22Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 474 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+$Date: 2008-05-29 15:25:22 +0200 (Do, 29 Mai 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Base.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Base.pm $
 
 =back
 

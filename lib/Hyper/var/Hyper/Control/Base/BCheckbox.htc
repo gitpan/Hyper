@@ -1,1 +1,1 @@
-<input type="checkbox" name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" value="1"<%IF _.checked %> checked="checked"<%/IF%> />
+<input type="checkbox" name="<%= this.get_name ESCAPE=HTML %>" id="<%= this.get_name ESCAPE=HTML %>" value="1"<%IF this.get_value %> checked="checked"<%/IF%> />

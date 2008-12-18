@@ -124,11 +124,11 @@ Hyper::Error
 
 =item Date
 
- $Date: 2008-02-16 02:52:33 +0100 (Sat, 16 Feb 2008) $
+ $Date: 2008-02-16 02:52:33 +0100 (Sa, 16 Feb 2008) $
 
 =item HeadURL
 
- $HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Config/Object/Control/Validator.pm $
+ $HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Config/Object/Control/Validator.pm $
 
 =back
 
