@@ -164,11 +164,11 @@ $Revision: 474 $
 
 =item Date
 
-$Date: 2008-05-29 15:25:22 +0200 (Do, 29 Mai 2008) $
+$Date: 2008-05-29 15:25:22 +0200 (Thu, 29 May 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Validator.pm $
+$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/trunk/lib/Hyper/Validator.pm $
 
 =back
 

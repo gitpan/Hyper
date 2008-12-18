@@ -253,11 +253,11 @@ $Revision: 497 $
 
 =item Date
 
-$Date: 2008-06-09 15:43:40 +0200 (Mo, 09 Jun 2008) $
+$Date: 2008-06-09 15:43:40 +0200 (Mon, 09 Jun 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control.pm $
+$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/trunk/lib/Hyper/Control.pm $
 
 =back
 

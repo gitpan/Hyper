@@ -232,11 +232,11 @@ $Revision: 433 $
 
 =item Date
 
-$Date: 2008-04-30 03:56:24 +0200 (Mi, 30 Apr 2008) $
+$Date: 2008-04-30 03:56:24 +0200 (Wed, 30 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Template/HTC.pm $
+$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/trunk/lib/Hyper/Template/HTC.pm $
 
 =back
 
