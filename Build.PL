@@ -2,7 +2,7 @@ use Module::Build;
 my $build = Module::Build->new(
     dist_abstract      => 'Hyper Framework',
     dist_name          => 'Hyper',
-    dist_version       => '0.04',
+    dist_version       => '0.04_01',
     module_name        => 'Hyper',
     license            => 'artistic',
     create_makefile_pl => 'traditional',

@@ -2,7 +2,7 @@ package Hyper::Control::Base::BTree;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.01');
+use version; our $VERSION = qv('0.02');
 
 use base qw(Hyper::Control::Base);
 use Class::Std::Storable;
@@ -24,6 +24,8 @@ sub STORABLE_thaw_post {
     # weaken up-reference in tree after thawing
     Scalar::Util::weaken($parent_of{ ident $_[0] })
         if defined $parent_of{ ident $_[0] };
+
+    $_[0]->SUPER::STORABLE_thaw_post();
 }
 
 sub add_child {
@@ -92,7 +94,7 @@ Hyper::Control::Base::BTree - Tree Base Control
 
 =head1 VERSION
 
-This document describes Hyper::Control::Base::BTree 0.01
+This document describes Hyper::Control::Base::BTree 0.02
 
 =head1 SYNOPSIS
 
@@ -201,23 +203,23 @@ Class::Std::Storable
 
 =item Last changed by
 
-$Author: kutterma $
+$Author: ac0v $
 
 =item Id
 
-$Id: BTree.pm 497 2008-06-09 13:43:40Z kutterma $
+$Id: BTree.pm 526 2008-12-23 07:38:23Z ac0v $
 
 =item Revision
 
-$Revision: 497 $
+$Revision: 526 $
 
 =item Date
 
-$Date: 2008-06-09 15:43:40 +0200 (Mon, 09 Jun 2008) $
+$Date: 2008-12-23 08:38:23 +0100 (Di, 23 Dez 2008) $
 
 =item HeadURL
 
-$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BTree.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BTree.pm $
 
 =back
 

@@ -223,11 +223,11 @@ $Revision: 357 $
 
 =item Date
 
-$Date: 2008-04-09 10:54:54 +0200 (Wed, 09 Apr 2008) $
+$Date: 2008-04-09 10:54:54 +0200 (Mi, 09 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/trunk/lib/Hyper/Persistent.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Persistent.pm $
 
 =back
 

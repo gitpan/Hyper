@@ -1,3 +1,4 @@
+Build.bat
 Build.PL
 Changes
 doc/Hyper/UML/Hyper_Workflow.png
@@ -86,7 +87,11 @@ lib/Hyper/var/Hyper/Validator/Group/Compare.htc
 lib/Hyper/var/Hyper/Validator/Single/Required.htc
 lib/Hyper/var/index.htc
 lib/Hyper/Workflow/Default.pm
+Makefile.PL
 MANIFEST			This list of files
+META.yml
+pod2htmd.tmp
+pod2htmi.tmp
 README
 t/01_use.t
 t/02_test_class.t
@@ -153,5 +158,3 @@ t/var/MyTest/Control/Container/Minimal/CSecond.htc
 t/var/test.htc
 t/var/textile.htc
 t/var/validator.htc
-Makefile.PL
-META.yml

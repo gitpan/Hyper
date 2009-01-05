@@ -99,11 +99,11 @@ $Revision: 370 $
 
 =item Date
 
-$Date: 2008-04-14 21:29:23 +0200 (Mon, 14 Apr 2008) $
+$Date: 2008-04-14 21:29:23 +0200 (Mo, 14 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: file:///srv/cluster/svn/repos/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BUpload.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Base/BUpload.pm $
 
 =back
 
