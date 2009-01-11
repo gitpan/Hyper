@@ -167,7 +167,7 @@ $Date: 2008-04-08 12:17:43 +0200 (Di, 08 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Singleton.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Singleton.pm $
 
 =back
 

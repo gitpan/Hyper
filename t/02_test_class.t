@@ -56,6 +56,7 @@ use Test::Hyper::Control;
 use Test::Hyper::Control::Primitive::XSelect;
 
 use Test::Hyper::Control::Base;
+use Test::Hyper::Control::Base::BTree;
 #use Test::Hyper::Control::Base::BInput;
 #use Test::Hyper::Control::Base::BPushButton;
 #use Test::Hyper::Control::Base::BSelect;

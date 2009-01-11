@@ -103,7 +103,7 @@ $Date: 2008-04-14 21:29:23 +0200 (Mo, 14 Apr 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Base/BUpload.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Control/Base/BUpload.pm $
 
 =back
 

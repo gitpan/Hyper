@@ -128,7 +128,7 @@ $Date: 2008-02-16 02:52:33 +0100 (Sa, 16 Feb 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Container.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Control/Container.pm $
 
 =back
 

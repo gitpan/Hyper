@@ -149,7 +149,7 @@ Class::Std::Storable
 
 =item HeadURL
 
- $HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Config/Object/Context.pm $
+ $HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Config/Object/Context.pm $
 
 =back
 

@@ -173,7 +173,7 @@ $Date: 2008-05-29 15:25:22 +0200 (Do, 29 Mai 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Validator/Single.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Control/Validator/Single.pm $
 
 =back
 

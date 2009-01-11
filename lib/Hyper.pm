@@ -2,19 +2,7 @@ package Hyper;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.04');
-
-use Class::Std;
-{
-    # workaround to suppress uninitialized warning
-    # see http://rt.cpan.org/Public/Bug/Display.html?id=30833
-    my $class_std_can = \&UNIVERSAL::can;
-    no warnings qw(redefine once);
-    *UNIVERSAL::can = sub {
-        defined $_[0] or return;
-        return $class_std_can->(@_);
-    };
-}
+use version; our $VERSION = qv('0.05');
 
 use base qw(Hyper::Singleton);
 
@@ -74,7 +62,7 @@ Hyper - The global Hyper Workflow Interface
 
 =head1 VERSION
 
-This document describes Hyper 0.04
+This document describes Hyper 0.05
 
 =head1 SYNOPSIS
 
@@ -82,6 +70,10 @@ This document describes Hyper 0.04
     Hyper->new()->work();
 
 =head1 DESCRIPTION
+
+Hyper stands for "Hype reloaded" and is a framework for workflow based web applications.
+With Hyper you're able to create Workflows with persistent data. It's like a running your
+Perl code on a Tomcat Server ;)
 
 =head1 ATTRIBUTES
 
@@ -150,10 +142,6 @@ L<version>
 
 =item *
 
-L<Class::Std>
-
-=item *
-
 L<IO::Scalar>
 
 =item *
@@ -188,19 +176,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Hyper.pm 522 2008-12-18 16:05:57Z ac0v $
+$Id: Hyper.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 522 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-12-18 17:05:57 +0100 (Do, 18 Dez 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper.pm $
 
 =back
 
@@ -210,7 +198,7 @@ Andreas Specht  C<< <ACID@cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2007, Andreas Specht C<< <ACID@cpan.org> >>.
+Copyright (c) 2009, Andreas Specht C<< <ACID@cpan.org> >>.
 All rights reserved.
 
 This module is free software; you can redistribute it and/or

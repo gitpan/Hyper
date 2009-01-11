@@ -51,9 +51,9 @@ sub get_suffix_for_class {
 
 1;
 
-__END__
+# ToDo: fix POD
 
-ToDo: fix POD
+__END__
 
 =pod
 
@@ -106,6 +106,18 @@ Does some initializing tasks such as setting the correct template engine.
 
 Get an array reference with paths where templates are located.
 
+=head2 get_class_for_suffix
+
+   'Hyper::Template::HTC' eq $template->get_class_for_suffix('htc');
+
+Get default class for template file suffix.
+
+=head2 get_suffix_for_class
+
+   'htc' eq $template->get_suffix_for_class('Hyper::Template::HTC');
+
+Get default template file suffix for a class.
+
 =head1 DIAGNOSTICS
 
 =head1 CONFIGURATION AND ENVIRONMENT
@@ -156,19 +168,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Template.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Template.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sa, 16 Feb 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Template.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Template.pm $
 
 =back
 

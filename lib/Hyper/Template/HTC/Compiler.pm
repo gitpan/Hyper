@@ -27,7 +27,7 @@ Hyper::Template::HTC::Compiler - Provide improved HTC features in a dirty way.
 
 =head1 VERSION
 
-This document describes Hyper::Template::HTC 0.01
+This document describes Hyper::Template::HTC::Compiler 0.01
 
 =head1 SYNOPSIS
 
@@ -84,19 +84,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Compiler.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Compiler.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sa, 16 Feb 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Template/HTC/Compiler.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Template/HTC/Compiler.pm $
 
 =back
 

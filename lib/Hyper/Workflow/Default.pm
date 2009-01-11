@@ -2,7 +2,7 @@ package Hyper::Workflow::Default;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('0.01');
+use version; our $VERSION = qv('0.02');
 
 use Class::Std;
 
@@ -127,7 +127,7 @@ sub get_show_state {
     my $control = shift;
 
     return exists $_shown_controls_of{ident $self}
-        ->{$self->get_viewstate()}
+        ->{$self->get_viewstate() or return}
         ->{$control->get_name()};
 }
 
@@ -143,7 +143,7 @@ Hyper::Workflow::Default - Default Workflow for Hyper
 
 =head1 VERSION
 
-This document describes Hyper::Workflow::Default 0.01
+This document describes Hyper::Workflow::Default 0.02
 
 =head1 SYNOPSIS
 
@@ -299,19 +299,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Default.pm 317 2008-02-16 01:52:33Z ac0v $
+$Id: Default.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 317 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-02-16 02:52:33 +0100 (Sa, 16 Feb 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Workflow/Default.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Workflow/Default.pm $
 
 =back
 

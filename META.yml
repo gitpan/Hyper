@@ -1,17 +1,17 @@
 ---
 name: Hyper
-version: 0.04_01
+version: v0.05
 author:
-  - 'Andreas Specht  C<< <ACID@cpan.org> >>'
-abstract: Hyper Framework
+  - Andreas 'ac0v' Specht
+abstract: 'Hyper Framework - Workflows with persistent data'
 license: artistic
 resources:
   license: http://opensource.org/licenses/artistic-license.php
 requires:
   CGI: 0
   Cache::FileCache: 0
-  Class::Std: 0.0.8
-  Class::Std::Storable: 0
+  Class::Std: 0.0.9
+  Class::Std::Storable: 0.0.1
   Config::IniFiles: 0
   Cwd: 0
   Data::Dumper: 0
@@ -43,10 +43,12 @@ build_requires:
   Test::More: 0
   Test::Pod: 0
   Test::Pod::Coverage: 0
+recommends:
+  Apache2::RequestUtil: 0
 provides:
   Hyper:
     file: lib/Hyper.pm
-    version: v0.04
+    version: v0.05
   Hyper::Application:
     file: lib/Hyper/Application.pm
     version: v0.01
@@ -139,6 +141,7 @@ provides:
     version: v0.02
   Hyper::Control::Primitive::XSelect:
     file: lib/Hyper/Control/Primitive/XSelect.pm
+    version: v0.02
   Hyper::Control::Template:
     file: lib/Hyper/Control/Template.pm
     version: v0.01
@@ -233,8 +236,8 @@ provides:
     version: v0.01
   Hyper::Workflow::Default:
     file: lib/Hyper/Workflow/Default.pm
-    version: v0.01
-generated_by: Module::Build version 0.2808
+    version: v0.02
+generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

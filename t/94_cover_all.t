@@ -6,9 +6,10 @@ use warnings;
 use File::Find;
 use Test::More;
 
-$ENV{TEST_AUTHOR} or plan(
-    skip_all => 'Author test. Set (export) $ENV{TEST_AUTHOR} to a true value to run.'
-);
+$ENV{RELEASE_TESTING}
+    or plan(
+        skip_all => 'Author test.  Set $ENV{RELEASE_TESTING} to a true value to run.'
+    );
 
 my $cover_html = '../cover_db/coverage.html'; # Devel::Cover report
 

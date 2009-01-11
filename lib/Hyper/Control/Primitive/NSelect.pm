@@ -6,7 +6,6 @@ use version; our $VERSION = qv('0.02');
 
 use Class::Std::Storable;
 use base qw(Hyper::Control::Primitive Hyper::Control::Base);
-use Hyper::Identifier;
 
 my %named_selects_of  :ATTR(:default<{}> :set<named_selects> :get<named_selects>);
 my %elements_of       :ATTR(:get<elements>);

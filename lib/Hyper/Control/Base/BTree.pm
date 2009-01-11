@@ -48,12 +48,11 @@ sub has_childs {
 sub has_next_sibling {
     my $self   = shift;
     my $parent = $self->get_parent() or return;
-    return $self->get_position() != $#{@{$parent->get_childs()}};
+    return $self->get_position() != ( @{$parent->get_childs()} - 1 );
 }
 
 sub has_previous_sibling {
-    my $self = shift;
-    return ! shift->get_position();
+    return $_[0]->get_position(); # 0 if no previos sibling exists
 }
 
 sub is_root {
@@ -128,6 +127,26 @@ Base Control for HTML Trees.
     $object->add_child($child);
 
 Add a child to a tree object. Childs are Tree Objects too.
+
+=head2 set_parent
+
+    $node->set_parent($root);
+
+Set parent object for node.
+
+=head2 get_path
+
+    # Sample Tree:
+    # ROOT
+    # '- child1
+    #   '- child2
+    #   '- child3
+
+    $child1->get_path(); # [ 0 ]
+    $child2->get_path(); # [ 0, 0 ]
+    $child3->get_path(); # [ 0, 1 ]
+
+Get path from child to root node.
 
 =head2 has_childs
 
@@ -207,19 +226,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: BTree.pm 526 2008-12-23 07:38:23Z ac0v $
+$Id: BTree.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 526 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-12-23 08:38:23 +0100 (Di, 23 Dez 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/trunk/lib/Hyper/Control/Base/BTree.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Control/Base/BTree.pm $
 
 =back
 

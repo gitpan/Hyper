@@ -118,7 +118,7 @@ Hyper::Error
 
 =item HeadURL
 
- $HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Config/Object/Validator/Named.pm $
+ $HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Config/Object/Validator/Named.pm $
 
 =back
 

@@ -74,7 +74,7 @@ needs templating features
 
 =head1 VERSION
 
-This document describes Hyper::Control::Template 0.1
+This document describes Hyper::Control::Template 0.01
 
 =head1 SYNOPSIS
 
@@ -180,19 +180,19 @@ $Author: ac0v $
 
 =item Id
 
-$Id: Template.pm 347 2008-04-04 14:41:40Z ac0v $
+$Id: Template.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 347 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-04-04 16:41:40 +0200 (Fr, 04 Apr 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control/Template.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Control/Template.pm $
 
 =back
 

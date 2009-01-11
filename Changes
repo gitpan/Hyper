@@ -1,7 +1,9 @@
 Revision history for Hyper
 
-0.04_01  Mon Jan  5 13:57:38 2009
-       * fixed CPAN ticket 42099
+0.05   Sun Jan 11 06:50:07 CET 2009
+       * fixed RT Ticket 42099 and added test
+       * added tests
+       * added pod
 
 0.04   Thu Dec 18 17:06:37 CET 2008
        * fixed CPAN ticket 41807

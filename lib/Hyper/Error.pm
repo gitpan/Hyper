@@ -353,7 +353,7 @@ $Date: 2008-12-18 17:05:57 +0100 (Do, 18 Dez 2008) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Error.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Error.pm $
 
 =back
 

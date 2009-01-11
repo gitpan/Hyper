@@ -174,6 +174,12 @@ needed for running our generated code.
 
 =head1 SUBROUTINES/METHODS
 
+=head2 set_owner
+
+    $control->set_owner( $self );
+
+Set owner for a control (eg. a container is the owner of a base control).
+
 =head2 set_value_recursive
 
     $self->set_value_recursive(
@@ -241,23 +247,23 @@ Scalar::Util
 
 =item Last changed by
 
-$Author: kutterma $
+$Author: ac0v $
 
 =item Id
 
-$Id: Control.pm 497 2008-06-09 13:43:40Z kutterma $
+$Id: Control.pm 528 2009-01-11 05:43:02Z ac0v $
 
 =item Revision
 
-$Revision: 497 $
+$Revision: 528 $
 
 =item Date
 
-$Date: 2008-06-09 15:43:40 +0200 (Mo, 09 Jun 2008) $
+$Date: 2009-01-11 06:43:02 +0100 (So, 11 Jan 2009) $
 
 =item HeadURL
 
-$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/branches/0.04/lib/Hyper/Control.pm $
+$HeadURL: http://svn.hyper-framework.org/Hyper/Hyper/tags/0.05/lib/Hyper/Control.pm $
 
 =back
 

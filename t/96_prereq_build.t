@@ -6,9 +6,10 @@ use warnings;
 use Test::More;
 use English qw(-no_match_vars);
 
-$ENV{TEST_AUTHOR} or plan(
-    skip_all => 'Author test. Set (export) $ENV{TEST_AUTHOR} to a true value to run.'
-);
+$ENV{RELEASE_TESTING}
+    or plan(
+        skip_all => 'Author test.  Set $ENV{RELEASE_TESTING} to a true value to run.'
+    );
 
 eval 'use Test::Prereq::Build';
 
